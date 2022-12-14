@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { register } from "../../features/auth/authSlice";
+import {useDispatch} from "react-redux"
 
 const Register = () => {
 
@@ -16,7 +17,10 @@ const [formData, setFormData] = useState({
   });
 
   const { first_name, last_name, email, password, phone, age, gender, country, city } = formData;
+  const dispatch = useDispatch()
 
+
+  
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -27,7 +31,7 @@ const [formData, setFormData] = useState({
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("formData", formData);
+    dispatch(register(formData))
   };
   return (
    
