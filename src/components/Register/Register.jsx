@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { register } from "../../features/auth/authSlice";
 
 const Register = () => {
 
@@ -26,10 +27,8 @@ const [formData, setFormData] = useState({
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     console.log("formData", formData);
   };
-
   return (
    
       <form onSubmit={onSubmit}>
