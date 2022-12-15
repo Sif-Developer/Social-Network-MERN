@@ -7,6 +7,7 @@ import Register from "./components/Register/Register";
 import Home from "./components/Home/Home";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
+import Logout from "./components/Logout/Logout";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout/>}/>
         </Routes>
       </BrowserRouter>
     </div>
