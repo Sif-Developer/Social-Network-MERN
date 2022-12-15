@@ -1,119 +1,136 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
 @import "../../colors.scss";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 
-
-nav{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: var(--black);
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--black);
 }
 
-.navigation{
-    width: 400px;
-    height: 70px;
-    background: #fff;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-
+.navigation {
+  width: 400px;
+  height: 70px;
+  background: #fff;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 }
-.navigation ul{
-    display: flex;
-    width:350px ;   
-}
-
-.navigation ul li{
-    position: relative;
-    list-style: none;
-    width: 70px;
-    height: 70px;
-    z-index: 1;
+.navigation ul {
+  display: flex;
+  width: 350px;
 }
 
-.navigation ul li .link{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
-    font-weight: 900px;
-    font-size: 1.2em;
+.navigation ul li {
+  position: relative;
+  list-style: none;
+  width: 70px;
+  height: 70px;
+  z-index: 1;
 }
 
-.navigation ul li .icon{
-    position: relative;
-    display: block;
-    line-height: 75px;
-    font-size: 1.5em;
-    text-align: center;
-    transition: 0.5s;
-    color: var(--black)
+.navigation ul li .link {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  font-weight: 900px;
+  font-size: 1.2em;
 }
 
-.navigation ul li.active .link .icon {
-    transform: translateY(-35px);
+.navigation ul li .icon {
+  position: relative;
+  display: block;
+  line-height: 75px;
+  font-size: 1.5em;
+  text-align: center;
+  transition: 0.5s;
+  color: var(--black);
 }
 
-.navigation ul li .link .text{
-    position: absolute;
-    color: var(--black);
-    font-weight: 400px;
-    font-size: 0.75;
-    letter-spacing: 0.05em;
-    transition: 0.5s;
-    opacity: 0;
+.navigation ul li.activeLink .link .icon {
+  transform: translateY(-35px);
 }
 
-.navigation ul li.active .link .text {
-    opacity: 1;
-    transform: translateY(10px);
-
+.navigation ul li .link .text {
+  position: absolute;
+  color: var(--black);
+  font-weight: 400px;
+  font-size: 0.75;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+  opacity: 0;
 }
 
-.indicator{
-    position: absolute;
-    top: -50%;
-    width: 70px;
-    height:70px;
-    background-color: var(--orange);
-    border-radius: 50%;
-    border: 6px solid var(--black);
-    transition: 0.5s;
+.navigation ul li.activeLink .link .text {
+  opacity: 1;
+  transform: translateY(10px);
 }
 
-.indicator::before{
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: -22px;
-    width: 20px;
-    height: 20px;
-    background: transparent;
-    border-top-right-radius:20px ;
-    box-shadow: 1px -10px 0 0 var(--black) ;
+.indicator {
+  position: absolute;
+  top: -50%;
+  width: 70px;
+  height: 70px;
+  background-color: var(--orange);
+  border-radius: 50%;
+  border: 6px solid var(--black);
+  transition: 0.5s;
 }
 
-.indicator::after{
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: -22px;
-    width: 20px;
-    height: 20px;
-    background: transparent;
-    border-top-left-radius:20px ;
-    box-shadow: -1px -10px 0 0 var(--black);
+.indicator::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -22px;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border-top-right-radius: 20px;
+  box-shadow: 1px -10px 0 0 var(--black);
 }
+
+.indicator::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -22px;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border-top-left-radius: 20px;
+  box-shadow: -1px -10px 0 0 var(--black);
+}
+.navigation ul li:nth-child(1).activeLink ~  .indicator
+{
+    transform: translateX(calc (70px * 0));
+    }
+    .navigation ul li:nth-child(2).activeLink ~ .indicator
+    {
+    transform: translateX(calc(70px * 1));
+    }
+    .navigation ul li:nth-child(3).activeLink ~ .indicator
+    {
+    transform: translateX(calc(70px * 2));
+    }
+    .navigation ul li:nth-child(4).activeLink ~ .indicator
+    {
+    transform: translateX(calc(70px * 3));
+    }
+    .navigation ul li:nth-child(5).activeLink  ~ .indicator
+    {
+    transform: translateX(calc(70px * 4));
+    }
