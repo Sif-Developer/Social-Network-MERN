@@ -121,14 +121,17 @@ nav {
     .navigation ul li:nth-child(2).activeLink ~ .indicator
     {
     transform: translateX(calc(70px * 1));
+    background-color: var(--blue);
     }
     .navigation ul li:nth-child(3).activeLink ~ .indicator
     {
     transform: translateX(calc(70px * 2));
+    background-color: var(--green)
     }
     .navigation ul li:nth-child(4).activeLink ~ .indicator
     {
     transform: translateX(calc(70px * 3));
+    background-color: plum;
     }
     .navigation ul li:nth-child(5).activeLink  ~ .indicator
     {
