@@ -1,6 +1,6 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
 @import "../../colors.scss";
-$nav-bg-color: var(--blue);
 * {
   margin: 0;
   padding: 0;
@@ -14,13 +14,13 @@ nav {
   align-items: center;
   width: 100vw;
   background-color: var(--black);
-  height: 3vw;
+  height: 7em;
   padding-top: 4vw;
 }
 
 .navigation {
   width: 95vw;
-  height: 70px;
+  height: 5em;
   background: var(--yellow);
   position: relative;
   display: flex;
@@ -52,7 +52,7 @@ nav {
   text-align: center;
   font-weight: 900px;
   font-size: 1.2em;
-  
+
 }
 
 .navigation ul li .icon {
@@ -64,9 +64,6 @@ nav {
   transition: 0.5s;
   color: var(--black);
 }
-
-
-    
 
 .navigation ul li.activeLink .link .icon {
   transform: translateY(-35px);
@@ -90,7 +87,7 @@ nav {
 .navigation ul li.activeLink .link .text {
   opacity: 1;
   transform: translateY(10px);
-  
+
 }
 .indicator {
   position: absolute;
@@ -104,7 +101,6 @@ nav {
 }
 
 .indicator::before {
-  content: "";
   position: absolute;
   top: 50%;
   left: -22px;
@@ -116,7 +112,6 @@ nav {
 }
 
 .indicator::after {
-  content: "";
   position: absolute;
   top: 50%;
   right: -22px;
@@ -128,6 +123,7 @@ nav {
 }
 .navigation ul li:nth-child(1).activeLink ~ .indicator {
   transform: translateX(calc (70px * 0));
+  background-color: var(--red);
 }
 .navigation ul li:nth-child(2).activeLink ~ .indicator {
   transform: translateX(calc(70px * 1));
@@ -147,3 +143,32 @@ nav {
 .navigation ul li:nth-child(5).activeLink ~ .indicator {
   transform: translateX(calc(70px * 4));
 }
+
+@media screen and (max-width: 768px) {
+    nav {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 15vw;
+    }
+    .navigation{
+        margin-bottom: 3em;
+    }
+}
+  
+  /* Creamos una animación que se active cuando cambie el tamaño de la pantalla */
+  @media screen and (min-width: 768px) and (max-width: 1200px) {
+    .navigation {
+        margin-top: 4em;
+    }
+  }
+  
+  @keyframes resize {
+    from {
+      width: 95vw;
+    }
+    to {
+      width: 75vw;
+    }
+  }
+
