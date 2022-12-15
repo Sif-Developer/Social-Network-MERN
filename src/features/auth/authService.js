@@ -12,6 +12,7 @@ const login = async (userData) => {
   // Verificamos que res.data contenga la propiedad "user" y que no sea nula
   if (res.data !== null) {
     localStorage.setItem("user", JSON.stringify(res.data));
+    localStorage.setItem("token", JSON.stringify(res.data.token))
     console.log("Ha funcionado!");
   } else if (res.data.user === null) {
     console.log("res.data.user es null");
@@ -20,14 +21,19 @@ const login = async (userData) => {
 };
 
 const logout = async () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const res = await axios.delete(API_URL + "/users/logoutUser", {
+  const token = JSON.parse(localStorage.getItem("token"));
+  const res = await axios.delete(API_URL + "/users/logoutUser",
+  {
     headers: {
-      authorization: user?.token,
+      authorization: token,
     },
   });
+  console.log(token)
   if(res.data){
+    
+
     localStorage.removeItem("user")
+    localStorage.removeItem("token")
   }
   return res.data
 };
