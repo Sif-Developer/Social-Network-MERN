@@ -66,8 +66,9 @@ nav {
 }
 
 .navigation ul li.activeLink .link .icon {
-  transform: translateY(-35px);
+  transform: translateY(-35px) rotate(360deg);
 }
+
 
 .navigation ul li .link .text {
     position: absolute;
@@ -124,6 +125,7 @@ nav {
   background: transparent;
   border-top-left-radius:20px ;
   box-shadow: -1px -10px 0 0 var(--black);
+ 
 }
 .navigation ul li:nth-child(1).activeLink ~ .indicator {
   transform: translateX(calc (70px * 0));
