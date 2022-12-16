@@ -21,7 +21,7 @@ nav {
 .navigation {
   width: 95vw;
   height: 5em;
-  background: var(--yellow);
+  background: white;
   position: relative;
   display: flex;
   justify-content: center;
@@ -77,7 +77,7 @@ nav {
     letter-spacing: 0.05em;
     transition: 0.5s;
     opacity: 0;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1.4px 1px rgba(0, 0, 0, 0.5);
   }
 
 .navigation ul li .link:hover .text {
@@ -89,36 +89,40 @@ nav {
   transform: translateY(10px);
 
 }
-.indicator {
+.indicator{
   position: absolute;
   top: -50%;
   width: 70px;
-  height: 70px;
+  height:70px;
   background-color: var(--orange);
   border-radius: 50%;
   border: 6px solid var(--black);
   transition: 0.5s;
+  color: transparent;
+
 }
 
-.indicator::before {
+.indicator::before{
+  content: "";
   position: absolute;
   top: 50%;
   left: -22px;
   width: 20px;
   height: 20px;
   background: transparent;
-  border-top-right-radius: 20px;
-  box-shadow: 1px -10px 0 0 var(--black);
+  border-top-right-radius:20px ;
+  box-shadow: 1px -10px 0 0 var(--black) ;
 }
 
-.indicator::after {
+.indicator::after{
+  content: "";
   position: absolute;
   top: 50%;
   right: -22px;
   width: 20px;
   height: 20px;
   background: transparent;
-  border-top-left-radius: 20px;
+  border-top-left-radius:20px ;
   box-shadow: -1px -10px 0 0 var(--black);
 }
 .navigation ul li:nth-child(1).activeLink ~ .indicator {
