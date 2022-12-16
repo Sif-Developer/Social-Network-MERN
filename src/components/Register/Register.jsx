@@ -47,6 +47,7 @@ const Register = () => {
       });
     } else {
       dispatch(register(formData));
+      
       return notification.success({
         message: "User Registered",
         description: "Thanks for trusting us!"

@@ -14,6 +14,8 @@ function Navbar() {
   const dispatch = useDispatch();
   const [activeIndex, setActiveIndex] = useState(0);
 
+    
+
   const onLogout = () => {
     dispatch(logout());
   };
@@ -63,7 +65,7 @@ function Navbar() {
             </Link>
           </li>
           <li>
-          <Link to="/logout">Logout</Link> 
+          <Link to="/logout" onClick={onLogout}> Logout</Link> 
           </li>
           <div className="indicator">{activeIndex}</div>
         </ul>
