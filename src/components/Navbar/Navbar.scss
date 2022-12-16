@@ -167,14 +167,14 @@ nav {
   
   @media screen and (max-width: 768px) {
     nav {
-      top: 90%; /* ocultamos el nav fuera de la pantalla */
-      height: 20vw;
+      top: 90%; 
+      height: 30vw;
       transition: 1s ease;
     }
   
     .navigation {
         height: 10em;;
-      margin-bottom: 6em;
+      margin-bottom: 5.8em;
       transition: 1s ease;
     }
   }

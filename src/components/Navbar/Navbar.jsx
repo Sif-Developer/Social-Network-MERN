@@ -62,6 +62,9 @@ function Navbar() {
               <p className="text">Posts</p>
             </Link>
           </li>
+          <li>
+          <Link to="/logout">Logout</Link> 
+          </li>
           <div className="indicator">{activeIndex}</div>
         </ul>
       </div>
