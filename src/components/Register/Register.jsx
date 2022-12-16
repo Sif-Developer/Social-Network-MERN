@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { register } from "../../features/auth/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { notification } from "antd";
+import { useEffect } from "react";
 const Register = () => {
   const [formData, setFormData] = useState({
     first_name: "",
@@ -28,7 +29,23 @@ const Register = () => {
     city,
     confirm_password,
   } = formData;
+
   const dispatch = useDispatch();
+  const { isSuccess, message, isError } = useSelector((state) => state.auth);
+  useEffect(() => {
+    if (isSuccess) {
+      notification.success({
+        message: "Success",
+        description: message,
+      });
+    }
+    if (isError){
+      notification.error({
+        message: "Error",
+        description: message,
+      })
+    }
+  }, [isSuccess,isError, message]);
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -47,11 +64,6 @@ const Register = () => {
       });
     } else {
       dispatch(register(formData));
-      
-      return notification.success({
-        message: "User Registered",
-        description: "Thanks for trusting us!"
-      }) 
     }
   };
 
