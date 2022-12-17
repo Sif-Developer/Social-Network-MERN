@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { register } from "../../features/auth/authSlice";
+import { register, reset } from "../../features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { notification } from "antd";
 import { useEffect } from "react";
@@ -45,7 +45,17 @@ const Register = () => {
         description: message,
       })
     }
+    dispatch(reset())
   }, [isSuccess,isError, message]);
+
+
+
+
+
+
+
+
+
 
   const onChange = (e) => {
     setFormData((prevState) => ({
