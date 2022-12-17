@@ -35,13 +35,13 @@ const Register = () => {
   useEffect(() => {
     if (isSuccess) {
       notification.success({
-        message: "Success",
+        message: "Successful register",
         description: message,
       });
     }
     if (isError){
       notification.error({
-        message: "Error",
+        message: "Error in the register",
         description: message,
       })
     }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { logout } from "../../features/auth/authSlice";
+import { logout, reset } from "../../features/auth/authSlice";
 import {
   FileOutlined,
   HomeOutlined,
@@ -9,16 +9,28 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import "./Navbar.scss";
+import { notification } from "antd";
 
 function Navbar() {
   const dispatch = useDispatch();
+  const isSuccess = useSelector(state => state.auth.isSuccess);
+  const message = useSelector(state => state.auth.message);
   const [activeIndex, setActiveIndex] = useState(0);
-
-    
 
   const onLogout = () => {
     dispatch(logout());
-  };
+  }
+
+  useEffect(() => {
+    if (isSuccess) {
+      notification.success({
+        message: "Logout successful!",
+        description: message
+      });
+    }
+    dispatch(reset())
+  }, [isSuccess, message]);
+
 
   return (
     <nav>

@@ -39,11 +39,13 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
   }
 });
 
-export const logout = createAsyncThunk("auth/logout", async () => {
+export const logout = createAsyncThunk("auth/logout", async (thunkAPI) => {
   try {
     return await authService.logout();
   } catch (error) {
     console.error(error);
+    return (message = error.response.data);
+    // console.log(error.response.data.message)
   }
 });
 
@@ -79,9 +81,11 @@ export const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
-      .addCase(logout.fulfilled, (state) => {
+      .addCase(logout.fulfilled, (state, action) => {
         state.token = null;
         state.user = null;
+        state.isSuccess = true;
+        state.message = action.payload.message;
       });
   },
 });
