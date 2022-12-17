@@ -1,6 +1,8 @@
+import { notification } from "antd";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { login } from "../../features/auth/authSlice";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login, reset } from "../../features/auth/authSlice";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -8,10 +10,30 @@ const Login = () => {
     password: "",
   });
 
-const {email, password} = formData
-const dispatch = useDispatch()
+  const { email, password } = formData;
+  const {message, isError, isSuccess} = useSelector(state => state.auth)
+  const dispatch = useDispatch();
 
-const onChange = (e) => {
+useEffect(()=>{
+  if(isError){
+    notification.error({
+      message: "Error",
+      description:  message
+    })
+  }
+  if(isSuccess){
+    notification.success({
+      message: "Login successful!",
+      description: message
+    })
+  }
+  dispatch(reset())
+}, [isSuccess, isError, message])
+
+
+
+
+  const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
 
@@ -19,22 +41,30 @@ const onChange = (e) => {
     }));
   };
 
-const onSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(formData))
-    
+    dispatch(login(formData));
   };
 
-return (
-   
-      <form onSubmit={onSubmit}>
-  
-  <input type="email" name="email" value={email} onChange={onChange} placeholder="Email" />
-  <input type="password" name="password" value={password} onChange={onChange} placeholder="Password" />
-  
+  return (
+    <form onSubmit={onSubmit}>
+      <input
+        type="email"
+        name="email"
+        value={email}
+        onChange={onChange}
+        placeholder="Email"
+      />
+      <input
+        type="password"
+        name="password"
+        value={password}
+        onChange={onChange}
+        placeholder="Password"
+      />
+
       <button type="submit">Login</button>
-</form>
- 
+    </form>
   );
 };
 
