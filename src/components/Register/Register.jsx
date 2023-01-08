@@ -3,6 +3,8 @@ import { register, reset } from "../../features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { notification } from "antd";
 import { useEffect } from "react";
+import "./Register.scss"
+
 const Register = () => {
   const [formData, setFormData] = useState({
     first_name: "",
@@ -78,7 +80,7 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="form-container">
       <input
         type="text"
         name="first_name"

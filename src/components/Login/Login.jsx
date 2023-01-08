@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login, reset } from "../../features/auth/authSlice";
-
+import "./Login.scss"
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -11,7 +11,7 @@ const Login = () => {
   });
 
   const { email, password } = formData;
-  const {message, isError, isSuccess} = useSelector(state => state.auth)
+  const { message, isError, isSuccess } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
 useEffect(()=>{
@@ -47,7 +47,7 @@ useEffect(()=>{
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="form-container">
       <input
         type="email"
         name="email"

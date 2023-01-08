@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { message } from "antd";
 import authService from "./authService";
 
 const user = JSON.parse(localStorage.getItem("user"));
@@ -10,9 +9,50 @@ const initialState = {
   token: token ? token : null,
   isError: false,
   isSuccess: false,
-  message: "",
+  isErrorLogout: false,
+  isSuccessLogout: false,
+  message: ""
 };
 
+export const authSlice = createSlice({
+  name: "auth",
+  initialState,
+  reducers: {
+    reset: (state) => {
+      state.isError = false;
+      state.isSuccess = false;
+      state.message = "";
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(register.fulfilled, (state, action) => {
+        state.isSuccess = true;
+        state.message = action.payload.message; 
+      })
+      .addCase(register.rejected, (state, action) => {
+        state.isError = true;
+        state.message = action.payload; 
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.token = action.payload;
+        state.isSuccess = true;
+        state.message = action.payload.message; 
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.isError = true;
+        state.message = action.payload; 
+      })
+      .addCase(logout.fulfilled, (state, action) => {
+        state.token = null;
+        state.user = null;
+        state.isSuccessLogout = true;
+        state.message = action.payload.message; 
+      });
+      
+  },
+});
 export const register = createAsyncThunk(
   "auth/register",
   async (user, thunkAPI) => {
@@ -44,51 +84,11 @@ export const logout = createAsyncThunk("auth/logout", async (thunkAPI) => {
     return await authService.logout();
   } catch (error) {
     console.error(error);
-    return (message = error.response.data);
-    // console.log(error.response.data.message)
+    const message = error.responde.data.message;
+    return thunkAPI.rejectWithValue(message);
   }
 });
 
-export const authSlice = createSlice({
-  name: "auth",
-  initialState,
-  reducers: {
-    reset: (state) => {
-      state.isError = false;
-
-      state.isSuccess = false;
-
-      state.message = "";
-    },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(register.fulfilled, (state, action) => {
-        state.isSuccess = true;
-        state.message = action.payload.message;
-      })
-      .addCase(register.rejected, (state, action) => {
-        state.isError = true;
-        state.message = action.payload;
-      })
-      .addCase(login.fulfilled, (state, action) => {
-        state.user = action.payload;
-        state.token = action.payload;
-        state.isSuccess = true;
-        state.message = action.payload.message;
-      })
-      .addCase(login.rejected, (state, action) => {
-        state.isError = true;
-        state.message = action.payload;
-      })
-      .addCase(logout.fulfilled, (state, action) => {
-        state.token = null;
-        state.user = null;
-        state.isSuccess = true;
-        state.message = action.payload.message;
-      });
-  },
-});
 export const { reset } = authSlice.actions;
 
 export default authSlice.reducer;

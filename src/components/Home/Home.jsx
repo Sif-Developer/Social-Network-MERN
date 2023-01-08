@@ -8,9 +8,7 @@ function Home() {
     <div className="home-container">
       <div className="home-nav"></div>
       <h1>Home page</h1>
-      {/* <Register/> */}
-      <br></br>
-      <Login/>
+
 
     </div>
   );
