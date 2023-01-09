@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
 import postService from "./postsService";
 
 import postsService from "./postsService";
@@ -20,6 +21,14 @@ export const getAllPosts = createAsyncThunk("posts/getAllPosts", async () => {
 export const  getPostById = createAsyncThunk("posts/getPostById", async (id) =>{
     try {
         return await postService.getPostById(id)
+    } catch (error) {
+        console.error(error)
+    }
+})
+
+export const  likePost = createAsyncThunk("posts/likePost", async (_id) =>{
+    try {
+        return await postService.likePost(_id)
     } catch (error) {
         console.error(error)
     }
@@ -49,7 +58,15 @@ export const postsSlice = createSlice({
       .addCase(getPostById.fulfilled, (state, action) => {
         state.post = action.payload
       })
-      
+      .addCase(likePost.fulfilled, (state, action) => {
+        state.post = state.posts.map(post => {
+            if(post._id == action.payload._id){
+                post = action.payload
+            }
+            return post
+        })
+      })
+
   },
 });
 
