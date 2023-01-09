@@ -12,9 +12,10 @@ const login = async (userData) => {
   // Verificamos que res.data contenga la propiedad "user" y que no sea nula
   if (res.data !== null) {
     const userData = res.data.user;
-    const { first_name, last_name, age, phone, email, gender, country, city } =
+    const { _id, first_name, last_name, age, phone, email, gender, country, city } =
       userData;
     const userLoggedData = {
+      _id,
       first_name,
       last_name,
       age,
