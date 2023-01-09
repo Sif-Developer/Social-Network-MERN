@@ -1,33 +1,43 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Login from "../Login/Login";
+import { logout } from "../../features/auth/authSlice";
 import Posts from "../Posts/Posts";
-import Register from "../Register/Register";
 import "./Home.scss";
 
 function Home() {
 
-const [text, setText] = useState("")
-const navigate = useNavigate()
-const handleChange = (e) => {
-  setText(e.target.value)
-  if (e.key === "Enter") {
-    console.log(text)
-    navigate("/search/" + text )
-  }
-}
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+  const [text, setText] = useState("");
+  const handleChange = (e) => {
+    setText(e.target.value);
+    if (e.key === "Enter") {
+      navigate('/search/'+ text)
+    }
+  };
+
+  const onLogout = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+    navigate("/");
+  };
+
 
   return (
     <div className="home-container">
       
       <div className="home-nav"></div>
       <h1>Home page</h1>
-      <div>
+      
+      <div  className="container-search">
         <input onKeyUp={handleChange} placeholder="search post" name="text" />
       </div>
+      <div>
           <Posts/>
-
+    </div>
     </div>
   );
 }

@@ -9,13 +9,13 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import PostDetail from "./components/PostDetail/PostDetail";
-import Search from "antd/es/transfer/search";
+import Search from "./components/Search/Search";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
         <Header />
+      <BrowserRouter>
         <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} />

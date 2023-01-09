@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 import { Provider } from "react-redux";
 import postService from "./postsService";
 
@@ -34,6 +35,14 @@ export const  likePost = createAsyncThunk("posts/likePost", async (_id) =>{
     }
 })
 
+export const getPostByName = createAsyncThunk("posts/getPostByName", async(title)=>{
+  try {
+    return await postsService.getPostByName(title)
+  } catch (error) {
+    console.error(error)
+  }
+})
+
 
 export const postsSlice = createSlice({
   name: "posts",
@@ -58,6 +67,7 @@ export const postsSlice = createSlice({
       .addCase(getPostById.fulfilled, (state, action) => {
         state.post = action.payload
       })
+     
       .addCase(likePost.fulfilled, (state, action) => {
         state.post = state.posts.map(post => {
             if(post._id == action.payload._id){
@@ -66,7 +76,10 @@ export const postsSlice = createSlice({
             return post
         })
       })
-
+      .addCase(getPostByName.fulfilled, (state, action)=>{
+        state.posts = action.payload
+      })
+     
   },
 });
 
