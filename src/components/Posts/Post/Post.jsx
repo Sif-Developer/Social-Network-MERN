@@ -6,6 +6,7 @@ import {
   getAllPosts,
   likePost,
 } from "../../../features/posts/postsSlice";
+import "./Post.scss"
 
 const Post = () => {
   const { posts, isLoading } = useSelector((state) => state.posts);

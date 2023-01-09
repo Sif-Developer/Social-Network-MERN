@@ -80,13 +80,16 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={onSubmit} className="form-container">
+    <div className="form-div">
+    <form onSubmit={onSubmit} className="contact-us form-container">
+      
       <input
         type="text"
         name="first_name"
         value={first_name}
         onChange={onChange}
         placeholder=" First name"
+        className="input"
       />
       <input
         type="text"
@@ -94,13 +97,15 @@ const Register = () => {
         value={last_name}
         onChange={onChange}
         placeholder=" Last name"
+        className="input"
       />
       <input
         type="email"
         name="email"
         value={email}
         onChange={onChange}
-        placeholder=" Email"
+        placeholder="Email"
+        className="input"
       />
       <input
         type="password"
@@ -108,6 +113,7 @@ const Register = () => {
         value={password}
         onChange={onChange}
         placeholder=" Password"
+        className="input"
       />
       <input
         type="password"
@@ -115,6 +121,7 @@ const Register = () => {
         value={confirm_password}
         onChange={onChange}
         placeholder="Confirm password"
+        className="input"
       />
       <input
         type="tel"
@@ -122,6 +129,7 @@ const Register = () => {
         value={phone}
         onChange={onChange}
         placeholder=" Phone number"
+        className="input"
       />
       <input
         type="number"
@@ -129,6 +137,7 @@ const Register = () => {
         value={age}
         onChange={onChange}
         placeholder=" Age"
+        className="input"
       />
       <input
         type="text"
@@ -136,6 +145,7 @@ const Register = () => {
         value={gender}
         onChange={onChange}
         placeholder=" gender"
+        className="input"
       />
       <input
         type="text"
@@ -143,6 +153,7 @@ const Register = () => {
         value={country}
         onChange={onChange}
         placeholder=" Country"
+        className="input"
       />
       <input
         type="text"
@@ -150,9 +161,13 @@ const Register = () => {
         value={city}
         onChange={onChange}
         placeholder=" City"
+        className="input"
       />
-      <button type="submit">Register</button>
+      <button type="submit" className="button">
+        REGISTER
+      </button>
     </form>
+    </div>
   );
 };
 
