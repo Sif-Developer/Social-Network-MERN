@@ -4,9 +4,10 @@ import postsService from "./postsService";
 
 const initialState = {
   posts: [],
+
 };
 
-export const getAllPosts = createAsyncThunk("posts/getAll", async () => {
+export const getAllPosts = createAsyncThunk("posts/getAllPosts", async () => {
   try {
     return await postsService.getAllPosts();
   } catch (error) {
