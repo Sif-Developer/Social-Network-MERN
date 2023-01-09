@@ -8,7 +8,7 @@ import postsService from "./postsService";
 const initialState = {
   posts: [],
   isLoading: false,
-  post:{}
+  post: {},
 };
 
 export const getAllPosts = createAsyncThunk("posts/getAllPosts", async () => {
@@ -19,30 +19,40 @@ export const getAllPosts = createAsyncThunk("posts/getAllPosts", async () => {
   }
 });
 
-export const  getPostById = createAsyncThunk("posts/getPostById", async (id) =>{
-    try {
-        return await postService.getPostById(id)
-    } catch (error) {
-        console.error(error)
-    }
-})
-
-export const  likePost = createAsyncThunk("posts/likePost", async (_id) =>{
-    try {
-        return await postService.likePost(_id)
-    } catch (error) {
-        console.error(error)
-    }
-})
-
-export const getPostByName = createAsyncThunk("posts/getPostByName", async(title)=>{
+export const getPostById = createAsyncThunk("posts/getPostById", async (id) => {
   try {
-    return await postsService.getPostByName(title)
+    return await postService.getPostById(id);
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
-})
+});
 
+export const likePost = createAsyncThunk("posts/likePost", async (_id) => {
+  try {
+    return await postService.likePost(_id);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+export const dislike = createAsyncThunk("products/dislike", async (_id) => {
+  try {
+    return await postService.dislike(_id);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+export const getPostByName = createAsyncThunk(
+  "posts/getPostByName",
+  async (title) => {
+    try {
+      return await postsService.getPostByName(title);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
 
 export const postsSlice = createSlice({
   name: "posts",
@@ -51,7 +61,7 @@ export const postsSlice = createSlice({
 
   reducers: {
     reset: (state) => {
-        state.isLoading = false;
+      state.isLoading = false;
     },
   },
 
@@ -65,21 +75,31 @@ export const postsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getPostById.fulfilled, (state, action) => {
-        state.post = action.payload
+        state.post = action.payload;
       })
-     
+
       .addCase(likePost.fulfilled, (state, action) => {
-        state.posts = state.posts.map(post => {
-            if(post._id == action.payload._id){
-                post = action.payload
-            }
-            return post
-        })
+        state.posts = state.posts.map((post) => {
+          if (post._id == action.payload._id) {
+            post = action.payload;
+          }
+          return post;
+        });
       })
-      .addCase(getPostByName.fulfilled, (state, action)=>{
-        state.posts = action.payload
+      .addCase(dislike.fulfilled, (state, action) => {
+        const posts = state.posts.map((post) => {
+          console.log(typeof action.payload._id);
+          if (post._id === action.payload.post._id) {
+            post = action.payload.post;
+          }
+          return post;
+        });
+        state.posts = posts;
       })
-     
+
+      .addCase(getPostByName.fulfilled, (state, action) => {
+        state.posts = action.payload;
+      });
   },
 });
 

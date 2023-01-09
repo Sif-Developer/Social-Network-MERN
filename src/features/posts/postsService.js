@@ -25,18 +25,31 @@ const likePost = async (_id) => {
   return res.data;
 };
 
-const getPostByName = async(title)=>{
-  const res = await axios.get (API_URL + "/posts/getPostByName/" + title)
-  return res.data
-}
+const dislike = async (_id) => {
+  const token = JSON.parse(localStorage.getItem("token"));
+  const res = await axios.put(
+    API_URL + "/posts/deleteLikePost/" + _id,
+    {},
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
+  return res.data;
+};
 
+const getPostByName = async (title) => {
+  const res = await axios.get(API_URL + "/posts/getPostByName/" + title);
+  return res.data;
+};
 
 const postService = {
   getAllPosts,
   getPostById,
   likePost,
-  getPostByName
-   
+  getPostByName,
+  dislike,
 };
 
 export default postService;
