@@ -9,6 +9,7 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import PostDetail from "./components/PostDetail/PostDetail";
+import Search from "antd/es/transfer/search";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/post/:id" element={<PostDetail/>}/>
+          <Route path="/search/:postName" element={<Search/>}/>
         </Routes>
       </BrowserRouter>
     </div>
