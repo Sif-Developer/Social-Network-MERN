@@ -49,6 +49,7 @@ export const postsSlice = createSlice({
       .addCase(getPostById.fulfilled, (state, action) => {
         state.post = action.payload
       })
+      
   },
 });
 

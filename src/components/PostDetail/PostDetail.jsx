@@ -1,31 +1,34 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import { getPostById } from '../../features/posts/postsSlice'
-import "./PostDetail.scss"
-
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { getPostById } from "../../features/posts/postsSlice";
+import "./PostDetail.scss";
 
 const PostDetail = () => {
-    const {id} = useParams()
-    const dispatch = useDispatch()
-    const {post} = useSelector((state) => state.posts)
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { post } = useSelector((state) => state.posts);
 
-    useEffect(() => {
-        dispatch(getPostById(id))
-    }, [])
+  useEffect(() => {
+    dispatch(getPostById(id));
+  }, []);
 
+  if (post && post.userId) {
+    return (
+      <div className="container-top">
+        <h1>Post Detail</h1>
+        <p>Name : {post.userId._id}</p>
+        <p>
+          Name: {post.userId.first_name} {post.userId.last_name}{" "}
+        </p>
+        <p>Title: {post.title}</p>
+        <p>Body: {post.body}</p>
+        <p>Country : {post.userId.country}</p>
+      </div>
+    );
+  } else {
+    return <div>Loading...</div>;
+  }
+};
 
-  return (
-    <div className="container-top"> 
-    <h1>Post Detail</h1>
-    <p>Name : {post.userId._id}</p>
-    <p>Name: {post.userId.first_name} {post.userId.last_name} </p>
-    <p>Title: {post.title}</p>
-    <p>Body: {post.body}</p>
-    <p>Country : {post.userId.country}</p>
-    </div>
-
-  )
-}
-
-export default PostDetail
+export default PostDetail;
