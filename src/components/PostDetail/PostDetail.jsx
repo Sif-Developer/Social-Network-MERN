@@ -18,10 +18,11 @@ const PostDetail = () => {
   return (
     <div className="container-top"> 
     <h1>Post Detail</h1>
-    <p>{post.userId}</p>
-    <p>{post.title}</p>
-    <p>{post.body}</p>
-    
+    <p>Name : {post.userId._id}</p>
+    <p>Name: {post.userId.first_name} {post.userId.last_name} </p>
+    <p>Title: {post.title}</p>
+    <p>Body: {post.body}</p>
+    <p>Country : {post.userId.country}</p>
     </div>
 
   )
