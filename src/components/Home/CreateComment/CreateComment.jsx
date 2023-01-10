@@ -1,57 +1,55 @@
-// import { useDispatch } from 'react-redux';
-// import { Button, Input, Modal } from 'antd';
-// import { comment } from './actions'; 
-// import { useState } from 'react';
+// import { useState } from "react";
+// import Modal from "react-bootstrap/Modal";
+// import { Button } from "antd";
+// import { useDispatch, useSelector } from "react-redux";
+// import { createComment } from "../../../../../features/comments/commentsSlice";
+// import { notification } from "antd";
+// import { useParams } from "react-router-dom";
+// import "./CreateComment.scss"
 
-// const AddCommentButton = () => {
-//   const dispatch = useDispatch(); 
-//   const [visible, setVisible] = useState(false);
-//   const [commentText, setCommentText] = useState(''); 
-//   const [postId, setPostId] = useState(''); 
+// const CreateComment = () => {
+//   const { _id } = useParams();
+//   const [commentData, setCommentData] = useState({
+//     description: "",
+//     postId: _id,
+//   });
 
-//   const showModal = () => {
-//     setVisible(true);
+//   const { user } = useSelector((state) => state.auth);
+
+//   const { description } = commentData;
+//   const dispatch = useDispatch();
+
+//   const onChange = (e) => {
+//     setCommentData((prevState) => ({
+//       ...prevState,
+
+//       [e.target.name]: e.target.value,
+//     }));
 //   };
 
-//   const handleCancel = () => {
-//     setVisible(false);
-//   };
-
-//   const handleOk = () => {
-//    
-//     const newComment = {
-//       text: commentText,
-//       postId: postId,
-//     };
-
-//     dispatch(comment(newComment));
-//     setVisible(false);
+//   const onSubmit = (e) => {
+//     e.preventDefault();
+//     dispatch(createComment({ ...commentData, _id }));
+//     notification.success({
+//       message: "Comment Posted",
+//     });
+//     console.log(commentData);
 //   };
 
 //   return (
-//     <div>
-//       <Button type="primary" onClick={showModal}>
-//         Add Comment
-//       </Button>
-//       <Modal
-//         title="Add a Comment"
-//         visible={visible}
-//         onOk={handleOk}
-//         onCancel={handleCancel}
-//       >
-//         <Input
-//           placeholder="Enter the post id"
-//           value={postId}
-//           onChange={(e) => setPostId(e.target.value)}
-//         />
-//         <Input
-//           placeholder="Enter your comment"
-//           value={commentText}
-//           onChange={(e) => setCommentText(e.target.value)}
-//         />
-//       </Modal>
-//     </div>
+//     <form onSubmit={onSubmit}>
+//       <input
+//         type="string"
+//         name="description"
+//         value={description}
+//         onChange={onChange}
+//       />
+
+//       <button type="submit" className="btn-">
+//         Add comment
+//       </button>
+//     </form>
 //   );
 // };
 
-// export default AddCommentButton;
+// export default CreateComment;

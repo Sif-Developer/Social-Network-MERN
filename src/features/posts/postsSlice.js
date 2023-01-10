@@ -64,9 +64,9 @@ export const createPost = createAsyncThunk(
     }
   }
 );
-export const comment = createAsyncThunk("posts/comments", async (comment) => {
+export const comment = createAsyncThunk("posts/comments", async (commentData) => {
   try {
-    return await postsService.comment(comment);
+    return await postsService.comment(commentData);
   } catch (error) {
     console.error(error);
   }

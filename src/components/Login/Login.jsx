@@ -54,6 +54,7 @@ useEffect(()=>{
         value={email}
         onChange={onChange}
         placeholder="Email"
+        className="input"
       />
       <input
         type="password"
@@ -61,6 +62,7 @@ useEffect(()=>{
         value={password}
         onChange={onChange}
         placeholder="Password"
+        className="input"
       />
 
       <button type="submit">Login</button>
