@@ -72,7 +72,10 @@ https://github.com/diegopalones/social-network-2.0.git
 
 ### 4. Home page with posts
 
-![foto](./src/assets/images/Home.png.png)
+![foto](./src/assets/images/Home.png)
+
+### 5. Navbar Animation
+<img src="./src/assets/images/Navbar.gif" alt="navbar animation gif" >
 
 ## 🧑‍💼 Author
 
