@@ -1,16 +1,20 @@
 import { Button, Form, Select, Input } from "antd";
+import { useDispatch } from "react-redux";
+import { createPost } from "../../../features/posts/postsSlice";
 
-const AddPost = () => {
-    const { Option } = Select;
+
     
-    const onFinish = (values) => {
-        console.log("Received values of form: ", values);
-    };
+    const AddPost = () => {
+        const dispatch = useDispatch()
     
+        const onFinish = (values) => {
+            dispatch(createPost(values))
+        };
+
     return (
         <Form onFinish={onFinish}>
 
-      <Form.Item label="Post title" name="name">
+      <Form.Item label="Post title" name="title">
         <Input placeholder="Post title" />
       </Form.Item>
 
