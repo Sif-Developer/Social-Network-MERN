@@ -81,7 +81,7 @@ https://github.com/diegopalones/social-network-2.0.git
 
 👤 **Sif**
 
-- Github: [@diegopalones](https://github.com/Sif03)
+- Github: [@Sif03](https://github.com/Sif03)
  
 
 This project was developed By [Sif03](https://github.com/Sif03)
