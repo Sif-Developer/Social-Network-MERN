@@ -28,28 +28,28 @@ const Post = () => {
         const isAlreadyLiked = post.likes.includes(user._id);
         console.log(user._id);
         return (
-          <div key={post._id}>
+          <div key={post._id} className="post">
             <Link to={"/post/" + post._id}>
-              <p>
-                {" "}
-                Title: {post.title} <br /> Body: {post.body}{" "}
-              </p>
+              <p className="post-title">{post.title}</p>
+              <p className="post-body">{post.body}</p>
             </Link>
-
-            <span>Likes: {post.likes.length} </span>
-
+  
+            <p className="post-likes">Likes: {post.likes.length}</p>
+  
             {isAlreadyLiked ? (
-              <button onClick={() => dispatch(dislike(post?._id))}>
+              <button className="post-button liked" onClick={() => dispatch(dislike(post?._id))}>
                 Dislike
               </button>
             ) : (
-              <button onClick={() => like(post?._id)}>Like</button>
+              <button className="post-button" onClick={() => like(post?._id)}>
+                Like
+              </button>
             )}
           </div>
         );
       })}
     </div>
   );
-};
+    }  
 
 export default Post;

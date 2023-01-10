@@ -28,8 +28,8 @@ const Search = () => {
   return (
     <>
     <div className="container-search" >Search</div>
-    <div  className="">
-        <input onKeyUp={handleChange} placeholder="search post" name="text" />
+    <div  >
+    <input onKeyUp={handleChange} placeholder="search post" name="text" className="modern-input fun-input" />
       </div>
     <div>
       <Post/>

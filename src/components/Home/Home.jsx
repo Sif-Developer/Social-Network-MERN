@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
+import AddPost from "../Posts/AddPost/AddPost";
 import Posts from "../Posts/Posts";
 import "./Home.scss";
 
@@ -37,6 +38,7 @@ function Home() {
       </div>
       <div>
           <Posts/>
+          <AddPost/>
     </div>
     </div>
   );

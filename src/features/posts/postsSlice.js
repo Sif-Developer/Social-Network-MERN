@@ -54,6 +54,18 @@ export const getPostByName = createAsyncThunk(
   }
 );
 
+export const createPost = createAsyncThunk("posts/createPost/", async (postData) => {
+  try {
+      return await postService.createPost(postData)
+  } catch (error) {
+      console.log(error)
+  }
+})
+
+
+
+
+
 export const postsSlice = createSlice({
   name: "posts",
 
@@ -99,7 +111,11 @@ export const postsSlice = createSlice({
 
       .addCase(getPostByName.fulfilled, (state, action) => {
         state.posts = action.payload;
-      });
+      })
+      .addCase(createPost.fulfilled, (state, action) => {
+        state.posts = [action.payload.post, ...state.posts]
+    })
+
   },
 });
 
