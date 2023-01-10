@@ -25,7 +25,6 @@ const Post = () => {
   }
   return (
     <div>
-      Post
       {posts?.map((post) => {
         const isAlreadyLiked = post.likes.includes(user._id);
         console.log(user._id);

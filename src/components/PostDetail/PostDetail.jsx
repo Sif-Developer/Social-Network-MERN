@@ -17,12 +17,12 @@ const PostDetail = () => {
     return (
       <div className="container-top">
         <h1>Post Detail</h1>
-        <p>Name : {post.userId._id}</p>
+        <p>Post Id : {post.userId._id}</p>
         <p>
-          Name: {post.userId.first_name} {post.userId.last_name}{" "}
+          Author: {post.userId.first_name} {post.userId.last_name}{" "}
         </p>
-        <p>Title: {post.title}</p>
-        <p>Body: {post.body}</p>
+        <p>Title: {post.title} Body: {post.body }</p>
+     
         <p>Country : {post.userId.country}</p>
       </div>
     );

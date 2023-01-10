@@ -14,7 +14,7 @@ const Posts = () => {
 
   return (
     <>
-    <div>Posts</div>
+    <div></div>
     <Post/>
     </>
   )
