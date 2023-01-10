@@ -9,10 +9,10 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
-
     <Provider store={store}>
-      <App />
+      <App/>
     </Provider>
 );
 
-
+//? VERSION
+//* v.0.0.4.75
