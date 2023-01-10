@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
 import AddPost from "../Posts/AddPost/AddPost";
 import Posts from "../Posts/Posts";
+import AddCommentButton from "./CreateComment/CreateComment";
+import CreateComment from "./CreateComment/CreateComment";
 import "./Home.scss";
 
 function Home() {
@@ -39,6 +41,7 @@ function Home() {
       <div>
           <Posts/>
           <AddPost/>
+          {/* <AddCommentButton/> */}
     </div>
     </div>
   );

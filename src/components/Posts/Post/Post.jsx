@@ -1,7 +1,9 @@
+import { DeleteOutlined } from "@ant-design/icons";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
+  deletePost,
   dislike,
   getAllPosts,
   likePost,
@@ -33,9 +35,10 @@ const Post = () => {
               <p className="post-title">{post.title}</p>
               <p className="post-body">{post.body}</p>
             </Link>
+            <DeleteOutlined onClick={() => dispatch(deletePost(post._id))} />
   
             <p className="post-likes">Likes: {post.likes.length}</p>
-  
+
             {isAlreadyLiked ? (
               <button className="post-button liked" onClick={() => dispatch(dislike(post?._id))}>
                 Dislike

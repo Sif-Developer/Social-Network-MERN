@@ -55,13 +55,34 @@ const createPost = async (postData) => {
   return res.data
 }
 
+
+const commentPost = async (comment) => {
+  const token = JSON.parse(localStorage.getItem("token"));
+  const res = await axios.put(API_URL + "/posts/insertComment/" + comment._id, comment, 
+  { headers: { authorization: token } });
+  
+
+  return res.data
+};
+
+const deletePost = async(id) => {
+  const token = JSON.parse(localStorage.getItem("token"));
+  const res = await axios.delete(API_URL + "/posts/deletePost/" + id,
+  {headers: {authorization:token}})
+  return res.data
+}
+
+
+
 const postService = {
   getAllPosts,
   getPostById,
   likePost,
   getPostByName,
   dislike,
-  createPost
+  createPost,
+  commentPost,
+  deletePost,
 };
 
 export default postService;

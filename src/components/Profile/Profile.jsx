@@ -6,7 +6,7 @@ import "./Profile.scss";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
-
+  
   return (
     <>
       <div className="profile-container">
