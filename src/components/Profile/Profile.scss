@@ -4,3 +4,49 @@
     background: var(--blue);
 }
 
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: sans-serif;
+  }
+  
+  .space-nav {
+    height: 80px;
+  }
+  
+  h1 {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+  
+  p {
+    font-size: 18px;
+    margin: 8px 0;
+  }
+  
+  .posts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .post-box {
+    width: 300px;
+    background-color: #eee;
+    border-radius: 8px;
+    margin: 16px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post-box h3 {
+    margin: 0;
+    font-size: 20px;
+  }
+  
+  .post-box p {
+    margin: 8px 0;
+    font-size: 16px;
+  }
+  

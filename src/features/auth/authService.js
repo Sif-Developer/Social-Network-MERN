@@ -12,7 +12,7 @@ const login = async (userData) => {
   // Verificamos que res.data contenga la propiedad "user" y que no sea nula
   if (res.data !== null) {
     const userData = res.data.user;
-    const { _id, first_name, last_name, age, phone, email, gender, country, city } =
+    const { _id, first_name, last_name, age, phone, email, gender, country, city , postIds} =
       userData;
     const userLoggedData = {
       _id,
@@ -24,6 +24,7 @@ const login = async (userData) => {
       gender,
       country,
       city,
+      postIds,
     };
     localStorage.setItem("user", JSON.stringify(userLoggedData));
     localStorage.setItem("token", JSON.stringify(res.data.token));

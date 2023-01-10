@@ -2,18 +2,15 @@ import { Button, Form, Select, Input } from "antd";
 import { useDispatch } from "react-redux";
 import { createPost } from "../../../features/posts/postsSlice";
 
+const AddPost = () => {
+  const dispatch = useDispatch();
 
-    
-    const AddPost = () => {
-        const dispatch = useDispatch()
-    
-        const onFinish = (values) => {
-            dispatch(createPost(values))
-        };
+  const onFinish = (values) => {
+    dispatch(createPost(values));
+  };
 
-    return (
-        <Form onFinish={onFinish}>
-
+  return (
+    <Form onFinish={onFinish}>
       <Form.Item label="Post title" name="title">
         <Input placeholder="Post title" />
       </Form.Item>
@@ -30,6 +27,5 @@ import { createPost } from "../../../features/posts/postsSlice";
     </Form>
   );
 };
-
 
 export default AddPost;

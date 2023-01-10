@@ -6,23 +6,32 @@ import "./Profile.scss";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
-  
+
   return (
     <>
-      <div className="profile-container">
-        <div className="space-nav"></div>
-        <h1>Profile page</h1>
-        <p>First Name: {user?.first_name}</p>
-        <p>Last Name: {user?.last_name}</p>
-        <p>Age: {user?.age}</p>
-        <p>Phone: {user?.phone}</p>
-        <p>Email: {user?.email}</p>
-        <p>Gender: {user?.gender}</p>
-        <p>Country: {user?.country}</p>
-        <p>City: {user?.city}</p>
+    <div className="profile-container">
+      <div className="space-nav"></div>
+      <h1>Profile page</h1>
+      <p>First Name: {user?.first_name}</p>
+      <p>Last Name: {user?.last_name}</p>
+      <p>Age: {user?.age}</p>
+      <p>Phone: {user?.phone}</p>
+      <p>Email: {user?.email}</p>
+      <p>Gender: {user?.gender}</p>
+      <p>Country: {user?.country}</p>
+      <p>City: {user?.city}</p>
+      
+      <div className="posts-container">
+        {user.postIds.map((post) => (
+          <div key={post._id} className="post-box">
+            <h3>{post.title}</h3>
+            <p>{post.body}</p>
+          </div>
+        ))}
       </div>
-    </>
-  );
+    </div>
+  </>
+);
 };
 
 export default Profile;
